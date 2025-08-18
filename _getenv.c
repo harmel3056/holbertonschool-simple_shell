@@ -3,18 +3,26 @@
 #include <stdlib.h>
 #include "shell.h"
 
+/**
+ * _getenv - searches environ for environment variable
+ * entered, and returns the values held by the var
+ * @name: environment variable to search for
+ *
+ * Return: values applied to the env var
+ */
+
 char *_getenv(const char *name)
 {
 	int i = 0;
 	size_t len;
-       
-	len = strlen(name); //works out the length of the variable name (PATH->4) (not inc terminator)
 
-	while (environ[i] != NULL) //environ is null-terminated array
+	len = strlen(name);
+
+	while (environ[i] != NULL)
 	{
-		if (strncmp(environ[i], name, len) == 0 //targets name and names' len
-				&& environ[i][len] == '=') //makes sure = follows name, in case of partial match like PATH->PATHWAY conflict
-			return (environ[i] + len + 1); //returns pointer to the beginning of the value string
+		if (strncmp(environ[i], name, len) == 0
+				&& environ[i][len] == '=')
+			return (environ[i] + len + 1);
 	i++;
 	}
 
