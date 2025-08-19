@@ -5,8 +5,6 @@
 #include <stdlib.h>
 #include "shell.h"
 
-#define MAX_ARGS 64
-
 /**
  * main - Simple Shell functionality
  *
@@ -16,6 +14,7 @@
 int main(void)
 {
 	char *line = NULL, *token, *argv[MAX_ARGS];
+	char *working_cmd;
 	size_t len = 0;
 	ssize_t input;
 	int i = 0;
@@ -32,7 +31,12 @@ int main(void)
 			continue;
 
 		line[strcspn(line, "\n")] = '\0';
-		token = strtok(line, " ");
+
+		if (built_ins(line, environ) == 1)
+			continue;
+
+		working_cmd = _which(line);
+		token = strtok(working_cmd, " ");
 
 		if (token == NULL)
 			continue;
@@ -42,6 +46,7 @@ int main(void)
 
 		argv[i] = NULL;
 		launch_exec_child(argv);
+		free(working_cmd);
 	}
 	free(line);
 	return (0);
