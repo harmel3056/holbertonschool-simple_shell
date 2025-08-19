@@ -31,15 +31,15 @@ char *_which(const char *command)
 
 	while (path_dir_item != NULL)
 	{
-		sprintf(compl_path, "%s%s", path_dir_item, command);
+		sprintf(compl_path, "%s/%s", path_dir_item, command);
 
-		if (access(command, X_OK) == 0)
+		if (access(compl_path, X_OK) == 0)
 		{
 			free(path_copy);
 			return (strdup(compl_path));
 		}
 
-		strtok(NULL, ":");
+		path_dir_item = strtok(NULL, ":");
 	}
 
 	free(path_copy);
