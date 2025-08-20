@@ -13,8 +13,7 @@
 
 int main(void)
 {
-	char *line = NULL, *token, *argv[MAX_ARGS];
-	char *working_cmd;
+	char *line = NULL, *argv[MAX_ARGS], *working_cmd;
 	size_t len = 0;
 	ssize_t input;
 	int i = 0;
@@ -32,25 +31,28 @@ int main(void)
 
 		line[strcspn(line, "\n")] = '\0';
 
-		if (built_ins(line, environ) == 1)
+		argv[i] = strtok(line, " ");
+		while (argv[i] != NULL && i < MAX_ARGS - 1)
+		{
+			i++;
+			argv[i] = strtok(NULL, " ");
+		}
+
+		if (argv[0] == NULL)
 			continue;
 
-		working_cmd = _which(line);
+
+		if (built_ins(argv[0], environ) == 1)
+			continue;
+
+		working_cmd = _which(argv[0]);
 		if (working_cmd == NULL)
 		{
 			perror("command not found");
 			continue;
 		}
 
-		token = strtok(working_cmd, " ");
-
-		if (token == NULL)
-			continue;
-
-		for (i = 0; token != NULL && i < MAX_ARGS - 1; i++)
-			argv[i] = token, token = strtok(NULL, " ");
-
-		argv[i] = NULL;
+		argv[0] = working_cmd;
 		launch_exec_child(argv);
 		free(working_cmd);
 	}
