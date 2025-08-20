@@ -20,9 +20,10 @@ int main(void)
 
 	while (1)
 	{
-		printf("$ ");
-		input = getline(&line, &len, stdin);
+		if (isatty(STDIN_FILENO))
+			printf("$ ");
 
+		input = getline(&line, &len, stdin);
 		if (input == -1)
 			break;
 
