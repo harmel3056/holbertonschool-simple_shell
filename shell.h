@@ -5,7 +5,7 @@
 
 extern char **environ;
 
-char *_which(const char *command);
+char *_which(char *command);
 char *_getenv(const char *name);
 int built_ins(char *line, char **environ);
 int launch_exec_child(char *argv[]);

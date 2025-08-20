@@ -13,13 +13,16 @@
  * followed by the command itself
  */
 
-char *_which(const char *command)
+char *_which(char *command)
 {
 	char compl_path[1024];
 	char *path_dir;
 	char *path_dir_item;
 	char *path_copy;
+	int i = 0;
 
+	if (command[i] == '/')
+		return (command);
 
 	path_dir = _getenv("PATH");
 
