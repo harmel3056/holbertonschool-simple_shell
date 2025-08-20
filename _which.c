@@ -37,7 +37,7 @@ char *_which(char *command)
 	path_copy = strdup(path_dir);
 	if (path_copy == NULL)
 		return (NULL);
-	
+
 	path_dir_item = strtok(path_copy, ":");
 
 	while (path_dir_item != NULL)

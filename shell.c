@@ -22,16 +22,12 @@ int main(void)
 	{
 		if (isatty(STDIN_FILENO))
 			printf("$ ");
-
 		input = getline(&line, &len, stdin);
 		if (input == -1)
 			break;
-
 		if (input == 1 && line[0] == '\n')
 			continue;
-
 		line[strcspn(line, "\n")] = '\0';
-
 		i = 0;
 		argv[i] = strtok(line, " ");
 		while (argv[i] != NULL && i < MAX_ARGS - 1)
@@ -39,21 +35,16 @@ int main(void)
 			i++;
 			argv[i] = strtok(NULL, " ");
 		}
-
 		if (argv[0] == NULL)
 			continue;
-
-
 		if (built_ins(argv[0], environ) == 1)
 			continue;
-
 		working_cmd = _which(argv[0]);
 		if (working_cmd == NULL)
 		{
 			perror("command not found");
 			continue;
 		}
-
 		argv[0] = working_cmd;
 		launch_exec_child(argv);
 		free(working_cmd);
