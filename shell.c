@@ -36,6 +36,12 @@ int main(void)
 			continue;
 
 		working_cmd = _which(line);
+		if (working_cmd == NULL)
+		{
+			perror("command not found");
+			continue;
+		}
+
 		token = strtok(working_cmd, " ");
 
 		if (token == NULL)
