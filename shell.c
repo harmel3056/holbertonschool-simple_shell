@@ -16,7 +16,7 @@ int main(void)
 	char *line = NULL, *argv[MAX_ARGS], *working_cmd;
 	size_t len = 0;
 	ssize_t input;
-	int i = 0;
+	int i;
 
 	while (1)
 	{
@@ -31,6 +31,7 @@ int main(void)
 
 		line[strcspn(line, "\n")] = '\0';
 
+		i = 0;
 		argv[i] = strtok(line, " ");
 		while (argv[i] != NULL && i < MAX_ARGS - 1)
 		{
