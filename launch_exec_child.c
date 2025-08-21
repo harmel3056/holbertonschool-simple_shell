@@ -23,21 +23,24 @@ int launch_exec_child(char *argv[])
 
 	if (pid == 0)
 	{
-		if (execve(argv[0], argv, environ) == -1)
-		{
-			perror("execve failure");
-			exit(EXIT_FAILURE);
-		}
+		execve(argv[0], argv, environ);
+		perror("execve failure");
+		exit(EXIT_FAILURE);
 	}
 
 	else if (pid > 0)
+	{
 		wait(&status);
 
-	else
+		if (WIFEXITED(status))
+			return (WEXITSTATUS(status));
+		else 
+			return (1);
+	}
+
+		else
 	{
 		perror("fork failed");
 		return (1);
 	}
-
-	return (0);
 }
