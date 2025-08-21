@@ -17,6 +17,8 @@ int main(void)
 	size_t len = 0;
 	ssize_t input;
 	int i;
+	char *progname = "hsh";
+	int line_count = 1;
 
 	while (1)
 	{
@@ -40,7 +42,7 @@ int main(void)
 		working_cmd = _which(argv[0]);
 		if (working_cmd == NULL)
 		{
-			perror("command not found");
+			fprintf(stderr, "%s: %d: %s: not found\n", progname, line_count, argv[0]);
 			continue;
 		}
 		argv[0] = working_cmd;
