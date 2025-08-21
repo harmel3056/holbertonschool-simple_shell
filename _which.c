@@ -22,24 +22,25 @@ char *_which(char *command)
 
 	if (command == NULL)
 		return (NULL);
-
 	if (command[0] == '/')
 	{
 		if (access(command, X_OK) == 0)
 			return (strdup(command));
 		return (NULL);
 	}
-
+	if (command[0] == '.' && command[1] == '/')
+	{
+		if (access(command, X_OK) == 0)
+			return (strdup(command));
+		return (NULL);
+	}
 	path_dir = _getenv("PATH");
 	if (path_dir == NULL)
 		return (NULL);
-
 	path_copy = strdup(path_dir);
 	if (path_copy == NULL)
 		return (NULL);
-
 	path_dir_item = strtok(path_copy, ":");
-
 	while (path_dir_item != NULL)
 	{
 		sprintf(compl_path, "%s/%s", path_dir_item, command);
@@ -52,7 +53,6 @@ char *_which(char *command)
 
 		path_dir_item = strtok(NULL, ":");
 	}
-
 	free(path_copy);
 	return (NULL);
 }
