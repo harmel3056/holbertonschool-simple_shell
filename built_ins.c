@@ -3,11 +3,13 @@
 #include <string.h>
 #include <stdlib.h>
 
+int last_status = 0;
+
 /**
  * built_ins - function mapping inbuilt shell functions
  * @line: command to check in the list of functions
  * @environ: environment to access
- *
+ * @status: status returned by global variable
  * Return: corresponding function, or 0 if no match found
  */
 
@@ -31,7 +33,7 @@ int built_ins(char *line, char **environ)
 	if (strcmp(argv[0], "exit") == 0)
 	{
 		free(line);
-		exit(0);
+		exit(last_status);
 	}
 	if (strcmp(argv[0], "env") == 0)
 	{

@@ -4,6 +4,7 @@
 #define MAX_ARGS 64
 
 extern char **environ;
+extern int last_status; 
 
 char *_which(char *command);
 char *_getenv(const char *name);

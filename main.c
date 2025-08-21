@@ -57,6 +57,7 @@ int main(int argc, char **argv)
 		}
 		argv_tokens[0] = working_cmd;
 		status = launch_exec_child(argv_tokens);
+		last_status = status;
 		free(working_cmd);
 
 		line_count++;
