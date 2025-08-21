@@ -11,15 +11,17 @@
  * Return: void
  */
 
-int main(void)
+int main(int argc, char **argv)
 {
-	char *line = NULL, *argv[MAX_ARGS], *working_cmd;
+	char *line = NULL, *argv_tokens[MAX_ARGS], *working_cmd;
 	size_t len = 0;
 	ssize_t input;
 	int i;
-	char *progname = "hsh";
+	int status = 0;
+	char *progname = argv[0];
 	int line_count = 1;
 
+	(void)argc;
 	while (1)
 	{
 		if (isatty(STDIN_FILENO))
@@ -29,26 +31,28 @@ int main(void)
 			break;
 		line[strcspn(line, "\n")] = '\0';
 		i = 0;
-		argv[i] = strtok(line, " ");
-		while (argv[i] != NULL && i < MAX_ARGS - 1)
+		argv_tokens[i] = strtok(line, " ");
+		while (argv_tokens[i] != NULL && i < MAX_ARGS - 1)
 		{
 			i++;
-			argv[i] = strtok(NULL, " ");
+			argv_tokens[i] = strtok(NULL, " ");
 		}
-		if (argv[0] == NULL)
+		if (argv_tokens[0] == NULL)
 			continue;
-		if (built_ins(argv[0], environ) == 1)
+		if (built_ins(argv_tokens[0], environ) == 1)
 			continue;
-		working_cmd = _which(argv[0]);
+		working_cmd = _which(argv_tokens[0]);
 		if (working_cmd == NULL)
 		{
-			fprintf(stderr, "%s: %d: %s: not found\n", progname, line_count, argv[0]);
+			fprintf(stderr, "%s: %d: %s: not found\n", progname, line_count, argv_tokens[0]);
+			status = 127;
+			line_count++;
 			continue;
 		}
-		argv[0] = working_cmd;
-		launch_exec_child(argv);
+		argv_tokens[0] = working_cmd;
+		launch_exec_child(argv_tokens);
 		free(working_cmd);
 	}
 	free(line);
-	return (0);
+	return (status);
 }
