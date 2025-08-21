@@ -2,11 +2,12 @@
 This repository contains the Simple Shell group project completed as part of Holberton School's C27 curriculum.
 
 ## Description
-A shell is a command-line interpreter that allows users to interact with an operating system by executing commands. This simple shell provides a stripped-back version of that environment, for education purposes.
+A shell is a command-line interpreter that allows users to interact with an operating system by executing commands.
+This simple shell provides a stripped-back version of that environment, for education purposes.
 
 ## License
 
-MIT License(LICENSE) ÂÂ Emily Chew & Mel Harki
+MIT License(LICENSE) ÂÂ Emily Chew & Mel Hari
 
 ## Contributors
 This project was completed by Holberton students from Cohort 27: <br>

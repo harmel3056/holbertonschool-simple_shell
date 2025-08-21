@@ -20,7 +20,7 @@ int main(void)
 
 	while (1)
 	{
-		if (isatty(STDIN_FILENO))
+		if (isatty(STDIN_FILENO) != 0)
 			printf("$ ");
 		input = getline(&line, &len, stdin);
 		if (input == -1)
