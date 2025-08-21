@@ -50,7 +50,7 @@ int main(int argc, char **argv)
 			continue;
 		}
 		argv_tokens[0] = working_cmd;
-		launch_exec_child(argv_tokens);
+		status = launch_exec_child(argv_tokens);
 		free(working_cmd);
 	}
 	free(line);
