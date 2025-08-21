@@ -26,7 +26,7 @@ char *_which(char *command)
 	{
 		if (access(command, X_OK) == 0)
 			return (strdup(command));
-		return (2);
+		return (NULL);
 	}
 	path_dir = _getenv("PATH");
 	if (path_dir == NULL)
