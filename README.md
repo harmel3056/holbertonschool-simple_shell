@@ -7,7 +7,7 @@ This simple shell provides a stripped-back version of that environment, for educ
 
 ## License
 
-[MIT License](/root/holbertonschool-simple_shell/LICENSE) Â©ÂÂ Emily Chew &  Harkin
+[MIT License](/root/holbertonschool-simple_shell/LICENSE) :copyright:©ÂÂ Emily Chew &  Harkin
 
 ## Contributors
 This project was completed by Holberton students from Cohort 27: <br>
