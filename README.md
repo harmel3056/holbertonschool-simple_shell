@@ -7,7 +7,7 @@ This simple shell provides a stripped-back version of that environment, for educ
 
 ## License
 
-MIT License(LICENSE) ÂÂ Emily Chew & Mel Hari
+MIT License(LICENSE) Â©ÂÂ Emily Chew & Melarkin
 
 ## Contributors
 This project was completed by Holberton students from Cohort 27: <br>
