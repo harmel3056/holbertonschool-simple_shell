@@ -25,8 +25,6 @@ int main(void)
 		input = getline(&line, &len, stdin);
 		if (input == -1)
 			break;
-		if (input == 1 && line[0] == '\n')
-			continue;
 		line[strcspn(line, "\n")] = '\0';
 		i = 0;
 		argv[i] = strtok(line, " ");
