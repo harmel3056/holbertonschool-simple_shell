@@ -22,13 +22,7 @@ char *_which(char *command)
 
 	if (command == NULL)
 		return (NULL);
-	if (command[0] == '/')
-	{
-		if (access(command, X_OK) == 0)
-			return (strdup(command));
-		return (NULL);
-	}
-	if (command[0] == '.' && command[1] == '/')
+	if (strchr(command, '/'))
 	{
 		if (access(command, X_OK) == 0)
 			return (strdup(command));
