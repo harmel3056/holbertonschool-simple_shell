@@ -28,7 +28,10 @@ int main(int argc, char **argv)
 			printf("$ ");
 		input = getline(&line, &len, stdin);
 		if (input == -1)
-			break;
+		{
+			free(line);
+			exit(status);
+		}
 		line[strcspn(line, "\n")] = '\0';
 		i = 0;
 		argv_tokens[i] = strtok(line, " ");
@@ -40,18 +43,23 @@ int main(int argc, char **argv)
 		if (argv_tokens[0] == NULL)
 			continue;
 		if (built_ins(argv_tokens[0], environ) == 1)
+		{
+			line_count++;
 			continue;
+		}
 		working_cmd = _which(argv_tokens[0]);
 		if (working_cmd == NULL)
 		{
 			fprintf(stderr, "%s: %d: %s: not found\n", progname, line_count, argv_tokens[0]);
-			status = 127;
+			status = 2;
 			line_count++;
 			continue;
 		}
 		argv_tokens[0] = working_cmd;
 		status = launch_exec_child(argv_tokens);
 		free(working_cmd);
+
+		line_count++;
 	}
 	free(line);
 	return (status);
