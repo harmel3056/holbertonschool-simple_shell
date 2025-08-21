@@ -29,8 +29,10 @@ int built_ins(char *line, char **environ)
 		return (0);
 
 	if (strcmp(argv[0], "exit") == 0)
+	{
+		free(line);
 		exit(0);
-
+	}
 	if (strcmp(argv[0], "env") == 0)
 	{
 		printenv(environ);
