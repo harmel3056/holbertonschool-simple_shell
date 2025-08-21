@@ -3,38 +3,26 @@
 #include <string.h>
 #include <stdlib.h>
 
-int last_status = 0;
 
 /**
  * built_ins - function mapping inbuilt shell functions
- * @line: command to check in the list of functions
+ * @argv: commands to check against inbuilt functionality
  * @environ: environment to access
  * @status: status returned by global variable
+ *
  * Return: corresponding function, or 0 if no match found
  */
 
-int built_ins(char *line, char **environ)
+int built_ins(char *argv[], char **environ, int *status)
 {
-	char *argv[MAX_ARGS];
-	char *token;
-	int i = 0;
-
-	token = strtok(line, " ");
-	while (token != NULL && i < MAX_ARGS - 1)
-	{
-		argv[i++] = token;
-		token = strtok(NULL, " ");
-	}
-	argv[i] = NULL;
-
 	if (argv[0] == NULL)
 		return (0);
 
 	if (strcmp(argv[0], "exit") == 0)
 	{
-		free(line);
-		exit(last_status);
+		exit(*status);
 	}
+
 	if (strcmp(argv[0], "env") == 0)
 	{
 		printenv(environ);

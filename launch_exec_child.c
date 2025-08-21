@@ -34,7 +34,7 @@ int launch_exec_child(char *argv[])
 
 		if (WIFEXITED(status))
 			return (WEXITSTATUS(status));
-		else 
+		else
 			return (1);
 	}
 
