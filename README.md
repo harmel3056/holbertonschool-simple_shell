@@ -15,7 +15,7 @@ The shell:
 	- `env` - prints the current environment variables and their values  
 
 Flowchart example:
-![Simple Shell Flowchart](
+![Simple Shell Flowchart](Simple Shell.png)
 
 ## Usage
 -- Interactive Mode
