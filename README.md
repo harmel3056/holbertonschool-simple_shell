@@ -5,7 +5,7 @@ This repository contains the Simple Shell group project completed as part of Hol
 A shell is a command-line interpreter that allows users to interact with an operating system by executing commands.
 This simple shell provides a stripped-back version of that environment, mimicing its behaviour in a limited form.
 
-###The shell:
+The shell:
 - Displays a prompt and waits for user input
 - Tokenises commands and arguments
 - Searches for executables in the system `PATH`
@@ -14,7 +14,7 @@ This simple shell provides a stripped-back version of that environment, mimicing
 	- `exit` - exits the shell with the status of the last executed command
 	- `env` - prints the current environment variables and their values  
 
-###Flowchart example:
+Flowchart example:
 ![Simple Shell Flowchart](
 
 ## Usage
