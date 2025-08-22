@@ -30,9 +30,9 @@ Interactive Mode
 | `exit`    | Exit shell session               |
 
 None-Interactive Mode:
-| Command                  | Description                               |
+| Command                  | Description                |
 |--------------------------|----------------------------|
-| `echo "ls -l" | ./hsh`   | Run command without prompt |
+| `echo "ls -l" \| ./hsh`   | Run command without prompt |
 
 ## Files
 - `main.c` - main shell loop
