@@ -18,14 +18,21 @@ Flowchart example:
 ![Simple Shell Flowchart](SimpleShell.png)
 
 ## Usage
--- Interactive Mode
-`./hsh
-$ ls -l
-$ env
-$ exit`
+The shell is compiled using the following:
+`gcc -Wall -Werror -Wextra -pedantic -std=gnu89 *.c -o hsh`
 
--- Non-Interactive Mode
-`echo "ls -l" | ./hsh`
+Interactive Mode
+| Specifier | Description                      |
+|-----------|----------------------------------|
+| `./hsh`   | Launch shell prompt              |
+| `ls -l`   | List files in long format        |
+| `env`     | Show environment variables       |
+| `exit`    | Exit shell session               |
+
+None-Interactive Mode:
+| Command                  | Description                               |
+|--------------------------|----------------------------|
+| `echo "ls -l" | ./hsh`   | Run command without prompt |
 
 ## Files
 - `main.c` - main shell loop
