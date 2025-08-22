@@ -14,7 +14,7 @@ The shell:
 	- `exit` - exits the shell with the status of the last executed command
 	- `env` - prints the current environment variables and their values  
 
-Flowchart example:
+Visual guide:
 ![Simple Shell Flowchart](SimpleShell.png)
 
 ## Usage
